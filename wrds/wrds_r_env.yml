@@ -1,0 +1,15 @@
+# Create wrds_r_env.yml file
+# begin wrds_r_env.yml
+name: wrds_r_env
+channels:
+- r
+- conda-forge
+dependencies:
+- r-base
+- r-dplyr
+- r-irkernel
+- r-RPostgres
+- r-reticulate
+- r-lubridate
+- r-ggplot2
+# end wrds_r_env.yml
