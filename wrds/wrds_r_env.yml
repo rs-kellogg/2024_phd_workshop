@@ -5,7 +5,7 @@ channels:
 - r
 - conda-forge
 dependencies:
-- r-base
+- r-base=3.6.1
 - r-dplyr
 - r-irkernel
 - r-RPostgres
