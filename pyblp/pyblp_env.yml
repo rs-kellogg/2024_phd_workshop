@@ -1,0 +1,21 @@
+# module load mamba/23.1.0
+# source /hpc/software/mamba/23.1.0/etc/profile.d/conda.sh
+# module load gcc/11.2.0 
+# mamba env create -p your_directory_for_pyblp_env -f pyblp_env.yml 
+#
+# source activate your_directory_for_pyblp_env
+# pip install pyblp
+#
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.10
+  - numpy
+  - scipy
+  - sympy
+  - patsy
+  - notebook
+  - pandas
+  - statsmodels
+  - pyhdfe
