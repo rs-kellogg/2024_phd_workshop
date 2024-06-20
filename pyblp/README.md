@@ -31,5 +31,7 @@ jupyter notebook --browser=firefox
 module load mamba/23.1.0
 source activate /kellogg/software/envs/pyblp_env
 module load knitro/12.4
+cd 2024_phd_workshop
+cd pyblp
 python blp_optimizer.py --opt_method knitro
 ```
