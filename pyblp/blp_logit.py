@@ -5,13 +5,15 @@ import numpy as np
 import pandas as pd
 import statsmodels as sm
 import statsmodels.regression.linear_model as smrl
+import os
+import time
 
 # Setting up the options for pyblp
 pyblp.options.digits = 2
 pyblp.options.verbose = False
 
-def run_linear_model():
-    # Read in the product dvata
+def run_linear_model(output_file):
+    # read in the product dvata
     product_data = pd.read_csv(pyblp.data.BLP_PRODUCTS_LOCATION)
 
     # Calculate the share_out variable
@@ -35,56 +37,64 @@ def run_linear_model():
     # Fit the model
     results = model.fit()
 
-    # Print the regression summary
-    print("==============================================================================")
-    print("===== Running Linear Regression with statsmodel                               ")
-    print("==============================================================================")
-    print("")
-    print(results.summary())
+    with open(output_file, "a") as f:
+        # Print the regression summary
+        f.write("==============================================================================\n")
+        f.write("===== Running Linear Regression with statsmodel\n")
+        f.write("==============================================================================\n")
+        f.write("\n")
+        f.write(str(results.summary()))
+        f.write("\n")
 
-    # The same magnitude price increase for a Yugo and BMW decrease demand equivalently
-    price_change = 0.02  # Change in car price
-    price_change_coefficient = results.params['prices']  # Coefficient for prices variable
+        # The same magnitude price increase for a Yugo and BMW decrease demand equivalently
+        price_change = 0.02  # Change in car price
+        price_change_coefficient = results.params['prices']  # Coefficient for prices variable
 
-    # Assuming a Yugo and a BMW both have the same values for other predictors,
-    # their changes in the dependent variable (dif_2) would be the same.
-    yugo_change = price_change * price_change_coefficient
-    bmw_change = price_change * price_change_coefficient
+        # Assuming a Yugo and a BMW both have the same values for other predictors,
+        # their changes in the dependent variable (dif_2) would be the same.
+        yugo_change = price_change * price_change_coefficient
+        bmw_change = price_change * price_change_coefficient
 
-    print("Change in dif_2 for Yugo:", yugo_change)
-    print("Change in dif_2 for BMW:", bmw_change)
+        f.write(f"Change in dif_2 for Yugo: {yugo_change}\n")
+        f.write(f"Change in dif_2 for BMW: {bmw_change}\n")
 
-    print("==============================================================================")
-    print("")
+        f.write("==============================================================================\n")
+        f.write("\n")
 
-def run_logit_model():
+def run_logit_model(output_file):
 
     product_data = pd.read_csv(pyblp.data.BLP_PRODUCTS_LOCATION)
 
     logit_formulation = pyblp.Formulation('prices + hpwt + air + mpd + space', absorb=None)
-    print("======================================================================")
-    print("===== Running Logit Model in BLP                                      ")
-    print("======================================================================")
-    print("")
-    print("===== Formulation                                                     ")
-    print(logit_formulation)
-    print("")
+    with open(output_file, "a") as f:
+        f.write("======================================================================\n")
+        f.write("===== Running Logit Model in BLP\n")
+        f.write("======================================================================\n")
+        f.write("\n")
+        f.write("===== Formulation\n")
+        f.write(str(logit_formulation))
+        f.write("\n\n")
 
-    problem = pyblp.Problem(logit_formulation, product_data)
-    print("===== Problem Details                                                 ")
-    print(problem)
-    print("")
+        problem = pyblp.Problem(logit_formulation, product_data)
+        f.write("===== Problem Details\n")
+        f.write(str(problem))
+        f.write("\n\n")
 
-    logit_results = problem.solve()
-    print("===== Results                                                         ")
-    print("")
-    print(logit_results)
-    print("")
-    print("======================================================================")
-    print("")
+        logit_results = problem.solve()
+        f.write("===== Results\n")
+        f.write("\n")
+        f.write(str(logit_results))
+        f.write("\n\n")
+        f.write("======================================================================\n")
+        f.write("\n")
 
 
 if __name__ == "__main__":
-    run_linear_model()
-    run_logit_model()
+    directory_name = f"{time.strftime('%Y-%m-%d')}_logit"
+    if not os.path.exists(directory_name):
+        os.makedirs(directory_name)
+    linear_output_file = os.path.join(directory_name, f"output_linear_{time.strftime('%Y-%m-%d_%H%M')}.txt")
+    logit_output_file = os.path.join(directory_name, f"output_logit_{time.strftime('%Y-%m-%d_%H%M')}.txt")
+    run_linear_model(linear_output_file)
+    run_logit_model(logit_output_file)
 

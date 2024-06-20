@@ -63,7 +63,7 @@ def main(optimization_method, product_data, agent_data, product_formulations, ag
     directory_name = f"{time.strftime('%Y-%m-%d')}_{optimization_method}"
     create_directory(directory_name)
 
-    output_file = os.path.join(directory_name, 'output.txt')
+    output_file = os.path.join(directory_name, f"output_{time.strftime('%Y-%m-%d_%H%M')}.txt")
     sys.stdout = open(output_file, 'w')
 
     problem = pyblp.Problem(
