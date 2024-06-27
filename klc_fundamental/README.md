@@ -1,4 +1,4 @@
-For the Kellogg Linux Cluster Fundamentals workshop, 
+# Instructions
 
-1.) Please look over this KLC Fundamental Jupyter Book before class begins:
+For the Kellogg Linux Cluster (KLC) Fundamentals workshop, please check out the [KLC Fundamental Jupyter Book](https://rs-kellogg.github.io/klc_fundamental/) before workshop. We will work on the two projects in the book during workshop.
 
