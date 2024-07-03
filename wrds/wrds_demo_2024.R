@@ -1,10 +1,11 @@
 # Global parameters
-packages <- c("RPostgres")
-startyr <- 2002
-endyr   <- 2011 
+packages <- c("RPostgres", "optparse")
+
+#startyr <- 2002
+#endyr   <- 2011 
 
 #Laptop
-outdir  <- "C:\\Users\\jpj8711\\downloads"
+#outdir  <- "C:\\Users\\jpj8711\\downloads"
 #KLC
 #outdir  <- "/kellogg/proj/jpj8711/crsp_dsf"
 
@@ -17,6 +18,21 @@ for (p in packages) {
     library(p, character.only = TRUE)
   }  
 }
+
+# Define command line options
+option_list <- list(
+  make_option(c("-s", "--startyr"), type="integer", help="Start year"),
+  make_option(c("-e", "--endyr"), type="integer", help="End year"),
+  make_option(c("-o", "--outdir"), type="character", help="Output directory")
+)
+
+# Parse command line options
+args <- parse_args(OptionParser(option_list=option_list))
+
+# Assign command line arguments to variables
+startyr <- args$startyr
+endyr   <- args$endyr
+outdir  <- args$outdir
 
 # Test for existence of outdir before attempting to write
 if (!dir.exists(outdir)) {
