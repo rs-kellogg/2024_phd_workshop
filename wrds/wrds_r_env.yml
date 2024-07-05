@@ -16,5 +16,6 @@ dependencies:
 - seaborn
 - jupyter
 - nb_conda_kernels
+- rstudio
 - pip:
   - wrds
