@@ -12,15 +12,17 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 import seaborn as sns
 import os
+import warnings
+warnings.filterwarnings('ignore')
 
 ########
 # Inputs
 ########
 # wrds connection
-conn = wrds.Connection(wrds_username='ambreen')
+conn = wrds.Connection(wrds_username='best-user-ever')
 
 # output dir
-output_dir = "/Users/ambreenchaudhri/Desktop/taq/graphs"
+output_dir = "/home/<user>/graphs"
 
 # List of companies and days to process
 companies = ['AAPL', 'GOOG', 'MSFT']
@@ -30,6 +32,12 @@ days = ['20230622', '20240315', '20200320']
 ############
 # Functions
 ############
+def create_output_dir(directory_path):
+    if not os.path.exists(directory_path):
+        os.makedirs(directory_path)
+        print(f"Directory created: {directory_path}")
+    else:
+        print(f"Directory already exists: {directory_path}")
 
 # submit sql query to wrds
 def query_wrds(conn, sql):
@@ -117,7 +125,10 @@ def plot_data(df, company, output_dir):
     plt.savefig(os.path.join(output_dir, f'{company}_{df["dt"].dt.date.unique()[0]}.png'))
 
     # Show the plot
-    plt.show()
+    #plt.show()
+
+    # print completed message
+    print(f"Plot for {company} on {df['dt'].dt.date.unique()[0]} saved to {output_dir}")
 
 ########
 # Run
@@ -125,8 +136,10 @@ def plot_data(df, company, output_dir):
 
 def main():
 
-    for company in companies[0:1]:
-        for day in days[0:2]:
+    create_output_dir(output_dir)
+
+    for company in companies:
+        for day in days:
             print(f"Processing data for {company} on {day}")
 
             # Create the SQL query
@@ -156,9 +169,8 @@ if __name__ == "__main__":
 
 # Lab:
 
-# 1.) add a test
-# 2.) grab data from another TAQ table or another variable from the same table
-# 3.) take advnantage of logging to find an elegant way to restart your code. 
-# 4.) version control a change you make to your code with git.
+# 1.) Add a new company and date. Save your changes with git
+# 2.) Add a test
+# 3.) grab data from another TAQ table or another variable from the same table
 
 
