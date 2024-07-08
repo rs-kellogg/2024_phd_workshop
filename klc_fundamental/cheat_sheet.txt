@@ -148,7 +148,7 @@ CONDA ENVIRONMENT
 module load micromamba
 
 # create a conda env with the yaml file
-micromamba env create -n klc_intro_env python=3.10 r-base=4.2.3 r-haven -c conda-forge
+micromamba create --prefix ~/2024_phd_workshop/klc_fundamental/klc_intro_env python=3.10 r-base=4.2.3 r-haven -c conda-forge
 
 # activate your own conda env
 micromamba activate klc_intro_env
