@@ -1,4 +1,4 @@
-name: wrds2_env
+name: wrds_workshop_env
 channels:
 - r
 - conda-forge
