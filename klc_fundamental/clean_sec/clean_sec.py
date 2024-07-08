@@ -1,6 +1,9 @@
 ##############################
 #  Remove HTML from SEC docs #
 ##############################
+# This file removes the html formatting from the SEC docs saved 
+# /kellogg/data/EDGAR/.  
+
 
 # libraries
 import pandas as pd
