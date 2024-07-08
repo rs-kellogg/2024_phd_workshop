@@ -2,7 +2,7 @@
 #  Analyze NLSWork Dataset #
 ############################
 # This file uses the NLSWork dataset to analyze wage distribution by age.  
-# It 1.) cleans, 2.) graphs and 3.) runs a regression for a certain year.
+# It 1.) cleans, 2.) graphs, and 3.) runs a regression for a certain year.
 
 # input libraries
 library(haven)
