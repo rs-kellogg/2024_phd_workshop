@@ -138,7 +138,7 @@ jupyter notebook --browser=firefox
 
 # launch an Rscript
 python sample.py
-python clean_sec.py --input_dir /kellogg/data/EDGAR/10-K/2023 --output_dir /home/<netID>/2024_phd_workshop/klc_fundamental/10k_clean_2023
+python clean_sec.py --input_dir /kellogg/data/EDGAR/10-K/2023 --output_dir /home/<netID>/2024_phd_workshop/klc_fundamental/clean_sec/10k_clean_2023
 
 ---------------------
 CONDA ENVIRONMENT
