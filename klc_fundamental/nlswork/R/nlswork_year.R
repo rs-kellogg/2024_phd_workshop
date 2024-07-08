@@ -1,8 +1,8 @@
 ############################
 #  Analyze NLSWork Dataset #
 ############################
-# This file uses the NLSWork dataset to analyze wage distribution by 
-# age and run a regression analysis for a specific year.
+# This file uses the NLSWork dataset to analyze wage distribution by age.  
+# It 1.) cleans, 2.) graphs and 3.) runs a regression for a certain year.
 
 # input libraries
 library(haven)
@@ -85,13 +85,6 @@ run_regression <- function(data,year) {
   reg_results_text = paste("reg_results", year, ".txt", sep="")
   write.table(lm_results$coefficients, file=reg_results_text)
 }
-
-# Main script
-args <- commandArgs(trailingOnly = TRUE)
-if (length(args) != 1) {
-  stop("Please provide the year as a command line argument.")
-}
-year <- as.numeric(args[1])
 
 ########
 # Run
