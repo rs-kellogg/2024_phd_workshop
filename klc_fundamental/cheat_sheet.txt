@@ -95,10 +95,10 @@ module avail stata
 # load stata
 module load stata/17
 
-# launch Stata
+# launch Stata GUI
 xstata-mp
 
-# launch an Rscript
+# launch Stata script from batch mode
 stata-mp -b sample.do
 stata-mp -b nlswork_75.do
 (Note that the "-b" stands for batch mode.
@@ -118,10 +118,10 @@ rstudio
 
 # launch an Rscript
 Rscript sample.R
-Rscript nlswork_annual.R
+Rscript nlswork_year.R 75
 
 # save results to a file
-Rscript nlswork_annual.R > nlswork_log.txt
+Rscript nlswork_year.R 75 > nlswork_log.txt
 
 ---------------------
 USING PYTHON
@@ -154,7 +154,7 @@ micromamba env create -n klc_intro_env python=3.10 r-base=4.2.3 r-haven -c conda
 micromamba activate klc_intro_env
 
 # activate the conda env Research Support made
-micromamba deactivate /kellogg/software/envs/klc_intro_env
+micromamba activate /kellogg/software/envs/klc_intro_env
 
 # exit a conda env
 micromamba deactivate
