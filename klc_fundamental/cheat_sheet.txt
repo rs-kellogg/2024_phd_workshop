@@ -1,0 +1,161 @@
+###################
+# KLC Cheat Sheet #
+###################
+
+-----
+URLS
+-----
+KLC Instructions: https://www.kellogg.northwestern.edu/academics-research/research-support/computing/kellogg-linux-cluster.aspx
+
+Cyberduck: https://cyberduck.io/
+
+FastX Desktop App: https://starnet.com/download/fastx-client
+
+---------------
+LINUX BASICS
+----------------
+# find present working directory
+pwd
+
+# change directories
+cd <directory path>
+
+# go to home directory
+cd ~
+
+# auto-completes program and file names
+<tab>
+
+# goes through your command history
+<up>
+
+interrupts the current command
+<ctrl>-<c>
+
+# quit your terminal session
+exit
+
+# nano text editor
+nano sample.txt
+(save changes: Control + x, Yes, Enter)
+
+-------------
+GIT COMMANDS
+-------------
+
+# load git
+module load git
+
+# clone materials from git repo
+git clone https://github.com/rs-kellogg/2024_phd_workshop/
+
+# navigate to intro folder
+cd 2024_phd_workshop/klc_fundamental
+
+# initialize git in your current directory
+git init
+
+# check current status
+git status
+
+# add all changes to the Staging Area
+git add .
+
+# commit changes to repo with message
+git commit -m "message"
+
+---------------------
+USING MODULES ON KLC
+---------------------
+
+# check modules loaded
+module list
+
+# search for a module
+module avail <software name>
+module avail utilities
+
+# load a modules
+module load <software name>
+module load utilizes
+
+# check home directory size
+homedu
+
+# remove software
+module purge <software name>
+
+------------
+USING STATA
+------------
+
+# search for a module
+module avail stata
+
+# load stata
+module load stata/17
+
+# launch Stata
+xstata-mp
+
+# launch an Rscript
+stata-mp -b sample.do
+stata-mp -b nlswork_75.do
+(Note that the "-b" stands for batch mode.
+
+---------------------
+USING R
+---------------------
+
+# search for a module
+module avail R
+
+# load R
+module load R/4.2.3
+
+# launch Studio
+rstudio
+
+# launch an Rscript
+Rscript sample.R
+Rscript nlswork_annual.R
+
+# save results to a file
+Rscript nlswork_annual.R > nlswork_log.txt
+
+---------------------
+USING PYTHON
+---------------------
+
+# search for python
+module avail python
+
+# load python
+module load python-anaconda3/2019.10
+
+# launch a jupyter notebook
+jupyter notebook --browser=firefox
+
+# launch an Rscript
+python sample.py
+python clean_sec.py --input_dir /kellogg/data/EDGAR/10-K/2023 --output_dir /home/<netID>/2024_phd_workshop/klc_fundamental/10k_clean_2023
+
+---------------------
+CONDA ENVIRONMENT
+---------------------
+
+# load a package manager
+module load micromamba
+
+# create a conda env with the yaml file
+micromamba env create -n klc_intro_env python=3.10 r-base=4.2.3 r-haven -c conda-forge
+
+# activate your own conda env
+micromamba activate klc_intro_env
+
+# activate the conda env Research Support made
+micromamba deactivate /kellogg/software/envs/klc_intro_env
+
+# exit a conda env
+micromamba deactivate
+
