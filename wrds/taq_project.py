@@ -169,11 +169,13 @@ if __name__ == "__main__":
 
 # Lab:
 
-# 1.) Modify inputs to be command line arguments. 
+# 1.) Grab data from another TAQ table or variable from same table. Save changes to git
+# 2.) Add a test.
+#     Example - Test whether SQL query returns empty df and skip to next entry.
+#     Send an email notification through KLC if three consecutive empty df are found.
+# 3.) Modify inputs to be command line arguments. 
 #      a.) output_dir can be specified from the command line
 #      b.) companies and days should be specified from a .csv file
-#      c.) add a new company and date. Save your changes with git
-# 2.) Add a test.
-# 3.) Grab data from another TAQ table or another variable from the same table
+#      c.) add a new company and date. 
 
 
