@@ -24,16 +24,6 @@ for (p in packages) {
   }  
 }
 
-# OPTIONAL: List all my surveys
-# (Useful if you don't know the exact name to use for sname above)
-surveys   <- all_surveys()
-surveys
-
-# Select one project by name
-myproject <- filter(surveys, name==sname)
-myproject
-myproject$id[1]
-
 # If necessary, create directory where output will be saved
 if (!dir.exists(outdir)) {
   dir.create(outdir)
@@ -46,6 +36,16 @@ if (!file.exists(logfile)){
   writeLines("Date|SurveyID|SurveyName|nrows", fileConn)
   close(fileConn)
 }
+
+# OPTIONAL: List all my surveys
+# (Useful if you don't know the exact name to use for sname above)
+surveys   <- all_surveys()
+surveys
+
+# Select one project by name
+myproject <- filter(surveys, name==sname)
+myproject
+myproject$id[1]
 
 #Fetch the survey for that project as .RDS file
 mysurvey <- fetch_survey(surveyID = myproject$id[1],
