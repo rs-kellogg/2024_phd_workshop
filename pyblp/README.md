@@ -28,12 +28,11 @@ python -m ipykernel install --user --name pyblp_env --display-name "Python (pybl
 https://jupyter.questanalytics.northwestern.edu  
 Select the "Python (pyblp_env)" kernel before you run cells
 
-- Launch the jupyter notebook in FastX  
+- Launch the jupyter notebook in FastX on KLC
 ```
 module load mamba/23.1.0
 source activate /kellogg/software/envs/pyblp_env
 jupyter notebook --browser=firefox
-# Select the "Python (pyblp_env)" kernel before you run cells
 ```  
 
 
