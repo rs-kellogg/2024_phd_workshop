@@ -19,7 +19,7 @@ source activate /kellogg/software/envs/pyblp_env
 
 # Run IPython notebook on Quest
 ```
-# Install kernel for use on Quest ipython notebook
+# Install kernel for use on Quest ipython notebook (need to install once, then kernel will be available in subsequent sesssions)
 module load mamba/23.1.0
 source activate /kellogg/software/envs/pyblp_env
 python -m ipykernel install --user --name pyblp_env --display-name "Python (pyblp_env)"
