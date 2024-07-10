@@ -4,7 +4,7 @@
 
 # Set Global Parameters
 packages <- c("qualtRics","dplyr","stringr")
-outdir <- "C:\\Users\\jpj8711\\downloads\\"     # "/kellogg/proj/jpj8711/qualtrics/"
+outdir <- "/kellogg/proj/jpj8711/qualtrics/"
 sname  <- "Response Pilot 2023 (Prolific)"
 
 ## RUN THIS STEP FIRST TIME ONLY, TO GENERATE ".Renviron" FILE
@@ -24,11 +24,8 @@ for (p in packages) {
   }  
 }
 
-#library(data.table)
-#library(formattable)
-
-
-# OPTIONAL: List all my surveys 
+# OPTIONAL: List all my surveys
+# (Useful if you don't know the exact name to use for sname above)
 surveys   <- all_surveys()
 surveys
 
@@ -36,13 +33,6 @@ surveys
 myproject <- filter(surveys, name==sname)
 myproject
 myproject$id[1]
-
-#Fetch the survey for that project as .RDS file
-mysurvey <- fetch_survey(surveyID = myproject$id[1],
-                         save_dir = outdir,
-                         force_request = TRUE,
-                         verbose = TRUE)
-nrow(mysurvey)
 
 # If necessary, create directory where output will be saved
 if (!dir.exists(outdir)) {
@@ -56,6 +46,13 @@ if (!file.exists(logfile)){
   writeLines("Date|SurveyID|SurveyName|nrows", fileConn)
   close(fileConn)
 }
+
+#Fetch the survey for that project as .RDS file
+mysurvey <- fetch_survey(surveyID = myproject$id[1],
+                         save_dir = outdir,
+                         force_request = TRUE,
+                         verbose = TRUE)
+nrow(mysurvey)
 
 # Read RDS file into dataframe "mysurvey", and save copy as CSV
 rdspath <- paste(outdir, "/", myproject$id[1], ".rds", sep="")
