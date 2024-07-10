@@ -1,3 +1,13 @@
+# Set up local git repository
+## First time to use this git repository
+```
+git clone https://github.com/rs-kellogg/2024_phd_workshop
+```
+## Already clone repository previously: pull latest updates from github
+```
+cd 2024_phd_workshop
+git pull
+```
 
 
 # Load pyblp_env mamba environment
@@ -14,7 +24,8 @@ module load mamba/23.1.0
 source activate /kellogg/software/envs/pyblp_env
 python -m ipykernel install --user --name pyblp_env --display-name "Python (pyblp_env)"
 ```
-- [Quest analytic node](jupyter.questanalytics.northwestern.edu/hub/login)  
+- Quest analytic node
+jupyter.questanalytics.northwestern.edu  
 Select the "Python (pyblp_env)" kernel before you run cells
 
 - Launch the jupyter notebook in FastX  
