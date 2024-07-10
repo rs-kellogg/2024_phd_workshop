@@ -3,7 +3,7 @@
 ```
 git clone https://github.com/rs-kellogg/2024_phd_workshop
 ```
-## Already clone repository previously: pull latest updates from github
+## Already cloned repository previously: pull latest updates from github
 ```
 cd 2024_phd_workshop
 git pull
