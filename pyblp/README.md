@@ -24,7 +24,7 @@ module load mamba/23.1.0
 source activate /kellogg/software/envs/pyblp_env
 python -m ipykernel install --user --name pyblp_env --display-name "Python (pyblp_env)"
 ```
-- Quest analytic node
+- Quest analytic node  
 jupyter.questanalytics.northwestern.edu  
 Select the "Python (pyblp_env)" kernel before you run cells
 
