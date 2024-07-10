@@ -25,7 +25,7 @@ source activate /kellogg/software/envs/pyblp_env
 python -m ipykernel install --user --name pyblp_env --display-name "Python (pyblp_env)"
 ```
 - Quest analytic node  
-jupyter.questanalytics.northwestern.edu  
+https://jupyter.questanalytics.northwestern.edu  
 Select the "Python (pyblp_env)" kernel before you run cells
 
 - Launch the jupyter notebook in FastX  
